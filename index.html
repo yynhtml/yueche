@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>约车</title>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <script src="js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/swiper-3.4.0.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/swiper.animate1.0.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.min.js"></script>
+        <style type="text/css">
+        	body{
+        		background: #fcfcfc;
+        		color: #666;
+        	}
+        	#header{
+        		height: 1.5rem;
+        		background: #fff;
+        		border-bottom: 1px solid green;
+        		text-align: center;
+        		line-height: 1.5rem;
+        		font-size: 0.7rem;
+        	}
+        	#header span:nth-of-type(1){
+        		display: block;
+        		float: left;
+        		height: 1.5rem;
+        		width: 2rem;
+        		padding: 0 0.2rem;
+        		background: url(img/back2.png) no-repeat center;
+        		background-size: 60% 75%;
+        	}
+        	#header span:nth-of-type(2){
+        		float: right;
+        		height: 1.5rem;
+        		width: 2rem;
+        		padding: 0 0.2rem;
+        	}
+        	#nav{
+        		height: 1.5rem;
+        		border-bottom: 1px solid #ccc;
+        		padding: 0 0.5rem;
+        		line-height: 1.5rem;
+        		text-align: center;
+        		overflow: hidden;
+        	}
+        	#nav ul{
+        		overflow: hidden;
+        	}
+        	#nav li{
+        		height: 1.5rem;
+        		float: left;
+        		width: 7.5rem;
+        		font-size: 0.6rem;
+        	}
+        	#nav span{
+        		padding: 0.1rem;
+        		padding-left: 1.2rem;
+        	}
+        	#nav li:nth-of-type(1) span{
+        		color: #f00;
+        		background: url(img/1.png) no-repeat left;
+        		background-size: 1rem 1rem;
+        	}
+        	#nav li:nth-of-type(2) span{
+        		background: url(img/3.png) no-repeat left;
+        		background-size: 1rem 1rem;
+        	}
+        	#content{
+        		width: 100%;
+        		min-height: 1rem;
+        	}
+        	.tle{
+        		text-align: center;
+        		padding: 1rem;
+        	}
+        	.tle h3{
+        		font-size: 0.9rem;
+        	}
+        	.tle p{
+        		font-size: 0.7rem;
+        		line-height: 1.2rem;
+        	}
+        	.tle i{
+        		color: #ec4500;
+        	}
+        	.cont li{
+        		height: 2rem;
+        		line-height: 2rem;
+        		width: 15rem;
+        		margin: 0 auto;
+        		border-bottom: 1px solid #ccc;
+        	}
+        	.cont span{
+        		display: block;
+        		float: left;
+        		height: 2rem;
+        		width: 1rem;
+        	}
+        	.cont li:nth-of-type(1) span{
+        		background: url(img/5.png) no-repeat center;
+        		background-size: 80% 40%;
+        	}
+        	.cont li:nth-of-type(2) span{
+        		background: url(img/6.png) no-repeat center;
+        		background-size: 80% 40%;
+        	}
+        	.cont li:nth-of-type(3) span{
+        		background: url(img/per.png) no-repeat center;
+        		background-size: 80% 40%;
+        	}
+        	.cont li:nth-of-type(4) span{
+        		background: url(img/time.png) no-repeat center;
+        		background-size: 80% 40%;
+        	}
+        	#start,#end{
+        		float: left;
+        		background: transparent;
+        		line-height: 2rem;
+        		width: 10rem;
+        		border: 0;
+        		margin: 0;
+        		font-size: 0.6rem;
+        	}
+        	.cont p{
+        		width: 7.5rem;
+        		height: 2rem;
+        		float: left;
+        	}
+        	.cont i{
+        		display: block;
+        		float: left;
+        		height: 2rem;
+        		width: 1rem;
+        	}
+        	#num,#result{
+        		width: 10rem;
+        		margin: 0;
+        		border: 0;
+        		height: 2rem;
+        		background: transparent;
+        		text-align: left;
+        		font-size: 0.6rem;
+        	}
+        	.box{
+        		text-align: center;
+        	}
+        	#rule{
+        		font-size: 0.6rem;
+        		line-height: 1.8rem;
+        		text-decoration: underline;
+        	}
+        	#yuding{
+        		display: block;
+        		height: 1.5rem;
+        		line-height: 1.5rem;
+        		width: 10rem;
+        		margin: 0 auto;
+        		background: #f60;
+        		color: #fff;
+        		font-size: 0.7rem;
+        		border-radius: 5px;
+        	}
+        	#mark{
+        		height: 7.5rem;
+        		background: #fff;
+        		position: fixed;
+        		bottom: 0;
+        		width: 100%;
+        		text-align: center;
+        		bottom: -7.6rem;
+        		z-index: 10;
+        	}
+        	#mark h3{
+        		margin: 0 0.5rem;
+        		height: 2rem;
+        		font-size: 0.7rem;
+        		line-height: 2rem;
+        		position: relative;
+        		width: 15rem;
+        	}
+        	#mark h3 span{
+        		height: 2rem;
+        		width: 2rem;
+        		position: absolute;
+        		left: 0;
+        	}
+        	#mark li{
+        		height: 1.2rem;
+        		line-height: 1.2rem;
+        		font-size: 0.6rem;
+        		border-bottom: 1px solid #f4f4f4;
+        	}
+        	#zhezhao{
+        		height: 100%;
+        		width: 100%;
+        		position: fixed;
+        		top: 0;
+        		left: 0;
+        		background: rgba(0,0,0,0.5);
+        		display: none;
+        		z-index: 9;
+        	}
+        </style>
+        <script type="text/javascript">
+        	$(function(){
+        		$("#nav").each(function(){
+        			$("li").click(function(){
+        				$(this).find("span").css("color","#f00")
+        				$(this).siblings().find("span").css("color","#666")
+        			})
+        		})
+        		
+        		//选择乘车人数
+        		$("#num").click(function(){
+        			//弹出选择框
+        			$("#zhezhao").css("display","block");
+        			$("#mark").animate({"bottom":"0"},300);
+        		})
+        		$("#no").click(function(){
+        			//收起选择框
+        			$("#mark").animate({"bottom":"-7.6rem"},300);
+        			$("#zhezhao").css("display","none");
+        		})
+        		$("#mark li").click(function(){
+    				$("#mark").animate({"bottom":"-7.6rem"},300);
+        			$("#zhezhao").css("display","none");
+        			$("#num").val($(this).html());
+    			})
+        	})
+        </script>
+	</head>
+	<body>
+		<div id="zhezhao"></div>
+		<div id="header">
+			<span></span>
+			<span>首页</span>
+			<p>新年特色服务</p>
+		</div>
+		<div id="nav">
+			<ul>
+				<li>
+					<span>市内</span>
+				</li>
+				<li>
+					<span>市外</span>
+				</li>
+			</ul>
+		</div>
+		<div id="content">
+			<div class="tle">
+				<h3>您好，新春出行方便安全。</h3>
+				<p><i>过来玩</i>&nbsp;为您保驾护航</p>
+			</div>
+			<div class="cont">
+				<ul>
+					<li>
+						<span></span>
+						<input type="text" id="start" placeholder="您的位置" />
+					</li>
+					<li>
+						<span></span>
+						<input type="text" id="end" placeholder="您要去哪儿？" />
+					</li>
+					<li>
+						<span></span>
+						<input type="text" id="num" placeholder="几人乘车" readonly="readonly" />
+					</li>
+					<li>
+						<span></span>
+						<input type="text" id='result' data-options='{"value":"2017-1-27 10:10","beginYear":2017,"endYear":2017,"beginMonth":1,"endMonth":2,"beginDay":27,"endDay":2,"beginHours":7,"endHours":21}' class="btn mui-btn mui-btn-block" placeholder="出发时间" />
+					</li>
+				</ul>
+			</div>
+			<div class="box">
+				<a href="javascript:;" id="rule">计价规则</a>
+				<a href="javascript:;" id="yuding">预约车辆</a>
+			</div>
+			<div id="mark">
+				<div class="num">
+					<h3><span id="no">取消</span>请选择乘车人数</h3>
+					<ul>
+						<li>1人</li>
+						<li>2人</li>
+						<li>3人</li>
+						<li>4人</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			//选择日期时间插件
+			(function($) {
+				$.init();
+				var result = $('#result')[0];
+				var btns = $('.btn');
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						/*
+						 * 首次显示时实例化组件
+						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+						 */
+						var picker = new $.DtPicker(options);
+						picker.show(function(rs) {
+							/*
+							 * rs.value 拼合后的 value
+							 * rs.text 拼合后的 text
+							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+							 * rs.m 月，用法同年
+							 * rs.d 日，用法同年
+							 * rs.h 时，用法同年
+							 * rs.i 分（minutes 的第二个字母），用法同年
+							 */
+							result.value = rs.text;
+							/* 
+							 * 返回 false 可以阻止选择框的关闭
+							 * return false;
+							 */
+							/*
+							 * 释放组件资源，释放后将将不能再操作组件
+							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+							 */
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui);
+		</script>
+	</body>
+</html>
